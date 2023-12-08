@@ -49,6 +49,12 @@
             margin: 10px 0;
         }
 
+        .counter {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
         .image-container {
             margin-bottom: 20px;
             position: relative;
@@ -138,6 +144,8 @@
             <img src="imagenes/Imagen1.png" alt="Icono de Graduación" />
             <!-- Imagen del graduado -->
             <img src="imagenes/recortada.png" alt="Graduado" />
+            <div class="counter" id="counter"></div>
+
         </div>
 
         <h1>¡Estás Invitado!</h1>
@@ -159,6 +167,9 @@
     </div>
 
     <script>
+        // Fecha de graduación
+        const graduationDate = new Date("December 14, 2023 17:00:00").getTime();
+
         function shootConfetti() {
             for (let i = 0; i < 20; i++) {
                 createConfetti();
@@ -177,6 +188,20 @@
                 document.querySelector(".invitation").removeChild(confetti);
             }, 3000);
         }
+
+        // Actualiza el contador cada segundo
+        setInterval(function () {
+            const now = new Date().getTime();
+            const distance = graduationDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("counter").innerHTML =
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        }, 1000);
     </script>
 </body>
 
