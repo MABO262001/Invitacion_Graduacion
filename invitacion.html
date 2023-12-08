@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Graduación</title>
+    <link rel="icon" href="imagenes/Imagen1.png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .invitation {
+            padding: 5%;
+            background-color: #fff;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        .invitation h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .invitation p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .image-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 40%;
+            max-width: 120px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 600px) {
+            .invitation h1 {
+                font-size: 1.5em;
+            }
+
+            .invitation p {
+                font-size: 0.9em;
+            }
+
+            .image-container img {
+                width: 50%;
+                max-width: 120px;
+                height: auto;
+            }
+
+            .cta-button {
+                font-size: 0.9em;
+            }
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-500px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes balloon-float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invitation" ontouchstart="shootConfetti()">
+        <div class="confetti" style="background-color: #3498db;"></div>
+        <div class="confetti" style="background-color: #e74c3c;"></div>
+        <div class="confetti" style="background-color: #2ecc71;"></div>
+        <div class="confetti" style="background-color: #f39c12;"></div>
+        <div class="confetti" style="background-color: #9b59b6;"></div>
+        <div class="confetti" style="background-color: #1abc9c;"></div>
+
+        <div class="image-container">
+            <!-- Imagen del gorro de graduado -->
+            <img src="imagenes/Imagen1.png" alt="Icono de Graduación" />
+            <!-- Imagen del graduado -->
+            <img src="imagenes/recortada.png" alt="Graduado" />
+        </div>
+
+        <h1>¡Estás Invitado!</h1>
+        <p>¡Es un día especial! Nos encantaría que te unieras a nosotros para celebrar la graduación de: <strong>
+            <p>
+                Fabiola Patricia Ballivian Ocampo</strong>.
+            </p>
+            <p>
+                ¡Vamos a hacer de este día un recuerdo inolvidable!
+            </p></p>
+        <p><strong>Fecha:</strong> 14 de diciembre del 2023</p>
+        <p><strong>Hora:</strong> 17:00 pm</p>
+        <p><strong>Dirección:</strong> Av. Santos Dumont/2do y 3er anillo/Mercado Ramafa</p>
+        <p>No olvides hacer clic en el botón <p>
+            ¡Nos vemos en la celebracion!</p>
+        </p>
+        <a class="cta-button" href="https://www.google.com/maps?q=-17.807995804869524,-63.18165154784254"
+            target="_blank">Llévame allí</a>
+    </div>
+
+    <script>
+        function shootConfetti() {
+            for (let i = 0; i < 20; i++) {
+                createConfetti();
+            }
+        }
+
+        function createConfetti() {
+            const colors = ["#3498db", "#e74c3c", "#2ecc71", "#f39c12", "#9b59b6", "#1abc9c"];
+            const confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.style.left = Math.random() * window.innerWidth + "px";
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            document.querySelector(".invitation").appendChild(confetti);
+
+            setTimeout(() => {
+                document.querySelector(".invitation").removeChild(confetti);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
